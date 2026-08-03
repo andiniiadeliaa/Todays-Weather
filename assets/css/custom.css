@@ -1,0 +1,72 @@
+/* Window sway — 6s infinite */
+@keyframes sway {
+  0%   { transform: rotate(-1.5deg); }
+  25%  { transform: rotate(0deg); }
+  50%  { transform: rotate(1.5deg); }
+  75%  { transform: rotate(0deg); }
+  100% { transform: rotate(-1.5deg); }
+}
+.window-illustration {
+  animation: sway 6s infinite ease-in-out;
+  transform-origin: center bottom;
+}
+
+/* Ripple — 0.6s forwards */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+.ripple-span {
+  position: absolute;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: -40px;
+  margin-left: -40px;
+  background: rgba(255,255,255,0.35);
+  pointer-events: none;
+  animation: ripple 0.6s forwards ease-out;
+}
+
+/* Mist drift — infinite */
+@keyframes mistDrift {
+  0%   { transform: translateY(0) translateX(0); opacity: var(--mist-opacity, 0.08); }
+  50%  { transform: translateY(-20px) translateX(8px); opacity: calc(var(--mist-opacity, 0.08) * 1.4); }
+  100% { transform: translateY(-40px) translateX(-4px); opacity: 0; }
+}
+.mist-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: mistDrift var(--mist-duration, 12s) infinite ease-in-out;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
+}
+
+/* Mood label fade in */
+@keyframes fadeInLabel {
+  0%   { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.mood-label-animate {
+  animation: fadeInLabel 0.5s ease forwards;
+}
+
+/* Mood button hover/active */
+.mood-btn {
+  position: relative;
+  overflow: hidden;
+  transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.mood-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 20px rgba(255,255,255,0.15), 0 0 40px rgba(100,160,255,0.1);
+}
+.mood-btn:active {
+  transform: scale(0.95);
+  filter: brightness(0.95);
+}
+
+/* Background transition */
+body {
+  transition: background 1.5s ease;
+}

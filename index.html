@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cozy Rain Mood Generator — an immersive ambient rainy-day experience in your browser." />
+  <title>Cozy Rain Mood Generator</title>
+
+  <!-- Google Fonts — Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind custom config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS (keyframes, micro-interactions) -->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <!-- App entry point -->
+  <script type="module" src="assets/js/app.js" defer></script>
+</head>
+
+<body class="bg-[#1a1a2e] min-h-screen flex items-center justify-center overflow-hidden font-poppins">
+
+  <!-- Rain / snow particle canvas -->
+  <canvas id="rain-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+
+  <!-- Mist overlay -->
+  <div id="mist-container" class="fixed inset-0 z-10 pointer-events-none overflow-hidden"></div>
+
+  <!-- Glow orb (ambient light behind the card) -->
+  <div
+    id="glow-orb"
+    class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full z-20 pointer-events-none"
+    style="filter: blur(80px); background: radial-gradient(circle, #4a9eff 0%, transparent 70%); transition: background 1s ease;"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Main content -->
+  <main class="relative z-30 w-full max-w-sm md:max-w-md px-4">
+
+    <!-- Glassmorphism card -->
+    <div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl">
+
+      <!-- Card header -->
+      <header class="text-center mb-6">
+        <p class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-1">Cozy Rain</p>
+        <h1 class="text-2xl font-bold text-white">Mood Generator</h1>
+      </header>
+
+      <!-- Window illustration -->
+      <section aria-label="Cozy window scene" class="flex justify-center mb-6">
+        <svg
+          id="window-illustration"
+          class="window-illustration w-48 h-48"
+          viewBox="0 0 200 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="10" y="10" width="180" height="180" rx="16" fill="#1a2035" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+          <rect x="20" y="20" width="80" height="80" rx="6" fill="rgba(100,160,255,0.12)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <rect x="105" y="20" width="80" height="80" rx="6" fill="rgba(100,160,255,0.12)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <rect x="20" y="105" width="80" height="80" rx="6" fill="rgba(100,160,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <rect x="105" y="105" width="80" height="80" rx="6" fill="rgba(100,160,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+          <line x1="10" y1="100" x2="190" y2="100" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+          <!-- Candle -->
+          <rect x="153" y="152" width="8" height="22" rx="2" fill="rgba(255,220,100,0.7)"/>
+          <ellipse cx="157" cy="148" rx="4" ry="6" fill="rgba(255,200,50,0.9)">
+            <animate attributeName="ry" values="6;8;5;7;6" dur="1.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;1;0.8;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+          </ellipse>
+          <!-- Mug -->
+          <rect x="35" y="148" width="28" height="18" rx="4" fill="rgba(255,255,255,0.15)"/>
+          <path d="M63 153 Q73 153 73 162 Q73 171 63 171" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+          <!-- Steam lines -->
+          <path d="M44 148 Q46 140 44 132" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round">
+            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+          </path>
+          <path d="M52 148 Q54 139 52 130" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round">
+            <animate attributeName="opacity" values="0.1;0.6;0.1" dur="2.6s" repeatCount="indefinite"/>
+          </path>
+          <!-- Rain drops on glass -->
+          <line x1="35" y1="25" x2="36" y2="45" stroke="rgba(174,214,241,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="55" y1="30" x2="56" y2="55" stroke="rgba(174,214,241,0.3)" stroke-width="1" stroke-linecap="round"/>
+          <line x1="70" y1="22" x2="71" y2="40" stroke="rgba(174,214,241,0.35)" stroke-width="1" stroke-linecap="round"/>
+          <line x1="120" y1="28" x2="121" y2="50" stroke="rgba(174,214,241,0.3)" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="150" y1="35" x2="151" y2="58" stroke="rgba(174,214,241,0.4)" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </section>
+
+      <!-- Mood label -->
+      <div class="text-center mb-4" aria-live="polite">
+        <span id="mood-emoji" class="text-2xl" aria-hidden="true">🌧️</span>
+        <p id="mood-name" class="text-sm font-semibold text-white/80 mt-1">Light Rain</p>
+      </div>
+
+      <!-- Quote -->
+      <blockquote
+        id="quote-text"
+        class="text-center text-white/60 text-sm italic mb-6 px-4 leading-relaxed"
+        style="transition: opacity 0.3s ease;"
+      >Let the rain wash away the noise of the world.</blockquote>
+
+      <!-- Mood button -->
+      <button
+        id="mood-btn"
+        class="mood-btn relative overflow-hidden w-full py-3 px-6 bg-white/15 hover:bg-white/20 border border-white/25 rounded-full text-white font-semibold text-base tracking-wide transition-all duration-200"
+        aria-label="Generate a new mood"
+      >✨ Create My Mood</button>
+
+      <hr class="border-white/10 my-5" />
+
+      <!-- Sound toggle row -->
+      <div class="flex items-center justify-between">
+        <p class="text-xs text-white/40 uppercase tracking-widest">Now playing</p>
+        <button
+          id="sound-toggle"
+          class="flex items-center gap-2 text-sm text-white/60 hover:text-white/80 transition-colors duration-200 px-3 py-1.5 rounded-full bg-white/5 border border-white/10"
+          aria-label="Toggle ambient sound"
+          aria-pressed="false"
+        >
+          <span id="sound-icon">🔇</span>
+          <span>Sound</span>
+        </button>
+      </div>
+
+    </div><!-- /card -->
+  </main>
+
+</body>
+</html>

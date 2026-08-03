@@ -1,0 +1,27 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="180" height="180" rx="16" fill="#1a2035" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <rect x="20" y="20" width="80" height="80" rx="6" fill="rgba(100,160,255,0.12)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <rect x="105" y="20" width="80" height="80" rx="6" fill="rgba(100,160,255,0.12)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <rect x="20" y="105" width="80" height="80" rx="6" fill="rgba(100,160,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <rect x="105" y="105" width="80" height="80" rx="6" fill="rgba(100,160,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+  <line x1="10" y1="100" x2="190" y2="100" stroke="rgba(255,255,255,0.2)" stroke-width="3"/>
+  <rect x="153" y="152" width="8" height="22" rx="2" fill="rgba(255,220,100,0.7)"/>
+  <ellipse cx="157" cy="148" rx="4" ry="6" fill="rgba(255,200,50,0.9)">
+    <animate attributeName="ry" values="6;8;5;7;6" dur="1.8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.9;1;0.8;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+  </ellipse>
+  <rect x="35" y="148" width="28" height="18" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <path d="M63 153 Q73 153 73 162 Q73 171 63 171" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+  <path d="M44 148 Q46 140 44 132" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M52 148 Q54 139 52 130" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <animate attributeName="opacity" values="0.1;0.6;0.1" dur="2.6s" repeatCount="indefinite"/>
+  </path>
+  <line x1="35" y1="25" x2="36" y2="45" stroke="rgba(174,214,241,0.4)" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="55" y1="30" x2="56" y2="55" stroke="rgba(174,214,241,0.3)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="70" y1="22" x2="71" y2="40" stroke="rgba(174,214,241,0.35)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="120" y1="28" x2="121" y2="50" stroke="rgba(174,214,241,0.3)" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="150" y1="35" x2="151" y2="58" stroke="rgba(174,214,241,0.4)" stroke-width="1" stroke-linecap="round"/>
+</svg>
