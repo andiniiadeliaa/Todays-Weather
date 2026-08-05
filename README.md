@@ -84,6 +84,7 @@ While working on this project, I learned how to clone a repository, commit chang
 - Improve accessibility
 - Optimize animation performance
 
+
 ---
 
 ## About This Project
