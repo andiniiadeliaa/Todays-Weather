@@ -21,7 +21,7 @@ A simple web application that lets users explore different weather scenes with a
 
 ---
 
-## Tech Stack
+## Built With
 
 - HTML5
 - Tailwind CSS
@@ -50,7 +50,7 @@ README.md
 
 ---
 
-## Challenges
+## Things I Ran Into
 
 ### Restoring files after an accidental revert
 
@@ -66,7 +66,7 @@ While working on this project, I learned how to clone a repository, commit chang
 
 ---
 
-## What I Learned
+## What I Practiced
 
 - Organizing a frontend project
 - Working with Git and GitHub
@@ -77,7 +77,7 @@ While working on this project, I learned how to clone a repository, commit chang
 
 ---
 
-## Future Improvements
+## Ideas for Improvement
 
 - Add more weather scenes
 - Add sound volume control
@@ -86,6 +86,6 @@ While working on this project, I learned how to clone a repository, commit chang
 
 ---
 
-## Notes
+## About This Project
 
 This project was built with the help of Kiro AI Agent as part of my learning process. I reviewed, tested, and adjusted the generated code before publishing the project.
