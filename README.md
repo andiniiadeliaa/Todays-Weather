@@ -1,16 +1,25 @@
-# Cozy Rain Mood Generator
+# Today's Weather
 
-Cozy Rain Mood Generator is a simple single-page web application that generates different rainy moods through interactive visuals, animations, ambient sounds, and quotes. The goal of this project is to explore front-end development while creating a relaxing user experience.
+A simple web application that lets users explore different weather scenes with animations and ambient sound. This project was built as part of my frontend learning journey while exploring spec-driven development using Kiro AI Agent.
+
+---
+
+## Preview
+
+![Today's Weather Preview](screenshot/preview.png)
+
+---
 
 ## Features
 
-- 8 different mood themes
+- Explore different weather scenes
 - Animated rain and snow effects
-- Random mood-based quotes
-- Ambient rain sound
-- Glassmorphism interface
-- Mouse parallax effect
+- Ambient background sound
+- Smooth transitions between weather conditions
 - Responsive layout
+- Interactive weather button
+
+---
 
 ## Tech Stack
 
@@ -19,6 +28,9 @@ Cozy Rain Mood Generator is a simple single-page web application that generates 
 - Vanilla JavaScript
 - Canvas API
 - Web Audio API
+- Kiro AI Agent
+
+---
 
 ## Project Structure
 
@@ -28,20 +40,52 @@ assets/
 ├── js/
 └── svg/
 
+screenshots/
+└── preview.png
+
 index.html
 package.json
 README.md
 ```
 
-## How to Run
+---
 
-```bash
-npm install
-npm test
-```
+## Challenges
 
-Or simply open `index.html` in your browser.
+### Restoring files after an accidental revert
 
-## Development
+Some generated files were removed after I accidentally reverted the project. I restored the project by checking the file structure and recreating the missing files based on the specification.
 
-This project was developed with the help of **Kiro AI Agent** using a specification-driven workflow. The application was planned through requirements, design, and task documents before implementation, following a structured software development process.
+### Running the project locally
+
+At first, Live Server couldn't run because Node.js wasn't installed. After installing Node.js, I was able to run the project locally.
+
+### Git and GitHub workflow
+
+While working on this project, I learned how to clone a repository, commit changes, resolve a push conflict using `git pull --rebase`, and publish the project to GitHub.
+
+---
+
+## What I Learned
+
+- Organizing a frontend project
+- Working with Git and GitHub
+- Using Tailwind CSS
+- Creating simple animations with the Canvas API
+- Using the Web Audio API
+- Building a project from specifications with Kiro AI Agent
+
+---
+
+## Future Improvements
+
+- Add more weather scenes
+- Add sound volume control
+- Improve accessibility
+- Optimize animation performance
+
+---
+
+## Notes
+
+This project was built with the help of Kiro AI Agent as part of my learning process. I reviewed, tested, and adjusted the generated code before publishing the project.
