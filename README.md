@@ -52,4 +52,4 @@ Instead of presenting information only as text, the project focuses on making th
 ## Screenshots
 
 ### Main Interface
-![Weather Moods](screenshots/preview.png)
+![Weather Moods](screenshot/preview.png)
